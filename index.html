@@ -19,8 +19,19 @@
     <p>Then click it when you are on a page with images you want to track down.</p>
     <p class="footer">&#9810; This bookmarklet is brought to you by <a href="http://twitter.com/jarred">@jarred</a> and is in no way afilliated with Google&trade;. Found a bug? <a href="http://github.com/jarred/src-img/">Fix it.</p></p>
       
-  </div>
+  </div> 
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4516491-29']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
 </body>
 </html>
-<script type="text/javascript" charset="utf-8">
-</script>
