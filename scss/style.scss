@@ -24,14 +24,22 @@ div.bookmarklet-hold{
     color: #0000FF;  
     text-decoration: none;
     &:hover{
-      text-decoration: underline;
+      u{
+        text-decoration: none;
+      }
     };
   }
   span.strike{
     text-decoration: line-through;
     color: #CCC;
   }
+}  
+
+div.bookmarklet-hold{
+  font-size: 16px;
+  font-weight: 600;
 }
+
 p.footer{
   color: #BBB;
   font-size: 12px;

@@ -73,13 +73,17 @@ div.bookmarklet-hold {
   div.bookmarklet-hold a {
     color: #0000FF;
     text-decoration: none; }
-    p a:hover,
-    div.bookmarklet-hold a:hover {
-      text-decoration: underline; }
+    p a:hover u,
+    div.bookmarklet-hold a:hover u {
+      text-decoration: none; }
   p span.strike,
   div.bookmarklet-hold span.strike {
     text-decoration: line-through;
     color: #CCC; }
+
+div.bookmarklet-hold {
+  font-size: 16px;
+  font-weight: 600; }
 
 p.footer {
   color: #BBB;
