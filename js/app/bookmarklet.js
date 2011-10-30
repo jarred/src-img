@@ -1,7 +1,7 @@
 (function() {
   var checkForRequire, loadLibs, server, sourceImage;
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
-  server = 'http://localhost:4104';
+  server = 'http://jarred.github.com/src-img/';
   sourceImage = {
     exit: function(e) {
       $('a.src-img').remove();
@@ -9,7 +9,7 @@
       e.preventDefault();
     },
     init: function() {
-      var $style, close;
+      var $style, close, count;
       $style = $('<link>');
       $style.attr({
         rel: 'stylesheet',
@@ -17,20 +17,25 @@
         type: 'text/css'
       });
       $('head').append($style);
+      count = 0;
       $.each($('img'), __bind(function(index, img) {
         var $img, searchUrl, src;
         $img = $(img);
         if ($img.height() < 100 || $img.width() < 100) {
           return;
         }
+        count++;
         src = $img.attr('src');
         if (src.indexOf('http' < 0)) {
           src = absolutizeURI(window.location, src);
         }
         searchUrl = "http://images.google.com/searchbyimage?image_url=" + (escape(src)) + "&image_content=&bih=" + ($img.height()) + "&biw=" + ($img.width());
-        console.log($img.offset());
         $('body').append("      <a class=\"src-img\" style=\"width:" + ($img.width()) + "px;height:" + ($img.height()) + "px;top:" + ($img.offset().top) + "px;left:" + ($img.offset().left) + "px;\" href=\"" + searchUrl + "\" target=\"_blank\"><span>&#63;&iquest;</span></a>      ");
       }, this));
+      if (count === 0) {
+        alert('I couldn\'t find any images :(');
+        return;
+      }
       close = $("<a href=\"#\" class=\"src-img-close\">&times;</a>");
       $('body').append(close);
       $(close).bind('click', this.exit);
@@ -42,7 +47,6 @@
     }, this));
   }, this);
   checkForRequire = __bind(function() {
-    console.log('checkForRequire');
     if (typeof require !== "undefined" && require !== null) {
       loadLibs();
       clearInterval(this.requireInt);

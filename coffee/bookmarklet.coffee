@@ -7,17 +7,20 @@ sourceImage =
     $('a.src-img-close').remove()
     e.preventDefault()
     return
+    
   init: () ->
-    #.. add css
     $style = $('<link>')
     $style.attr
       rel: 'stylesheet'
       href: "#{server}/css/bookmarklet.css"
       type: 'text/css'
-    $('head').append $style
+    $('head').append $style      
+    count = 0
+    
     $.each $('img'), (index, img) =>
       $img = $(img)
       return if $img.height() < 100 || $img.width() < 100
+      count++
       src = $img.attr 'src'
       if src.indexOf 'http' < 0
         src = absolutizeURI window.location, src
@@ -25,6 +28,10 @@ sourceImage =
       $('body').append "
       <a class=\"src-img\" style=\"width:#{$img.width()}px;height:#{$img.height()}px;top:#{$img.offset().top}px;left:#{$img.offset().left}px;\" href=\"#{searchUrl}\" target=\"_blank\"><span>&#63;&iquest;</span></a>
       "
+      return
+      
+    if count == 0
+      alert 'I couldn\'t find any images :('
       return
     close = $ "<a href=\"#\" class=\"src-img-close\">&times;</a>"
     $('body').append close
