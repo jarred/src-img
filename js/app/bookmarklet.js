@@ -19,7 +19,7 @@
       $('head').append($style);
       count = 0;
       $.each($('img'), __bind(function(index, img) {
-        var $img, searchUrl, src;
+        var $img, finalUrl, searchUrl, src;
         $img = $(img);
         if ($img.height() < 100 || $img.width() < 100) {
           return;
@@ -30,7 +30,8 @@
           src = absolutizeURI(window.location, src);
         }
         searchUrl = "http://images.google.com/searchbyimage?image_url=" + (escape(src)) + "&image_content=&bih=" + ($img.height()) + "&biw=" + ($img.width());
-        $('body').append("      <a class=\"src-img\" style=\"width:" + ($img.width()) + "px;height:" + ($img.height()) + "px;top:" + ($img.offset().top) + "px;left:" + ($img.offset().left) + "px;\" href=\"" + searchUrl + "\" target=\"_blank\"><span>&#63;&iquest;</span></a>      ");
+        finalUrl = "" + server + "track.html?u=" + (escape(searchUrl));
+        $('body').append("      <a class=\"src-img\" style=\"width:" + ($img.width()) + "px;height:" + ($img.height()) + "px;top:" + ($img.offset().top) + "px;left:" + ($img.offset().left) + "px;\" href=\"" + finalUrl + "\" target=\"_blank\"><span>&#63;&iquest;</span></a>      ");
       }, this));
       if (count === 0) {
         alert('I couldn\'t find any images :(');
