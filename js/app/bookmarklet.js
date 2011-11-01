@@ -15,7 +15,6 @@
     },
     init: function() {
       var $style, close, count;
-      console.log('init()?');
       $style = $('<link>');
       $style.attr({
         rel: 'stylesheet',

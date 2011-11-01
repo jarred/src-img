@@ -27,7 +27,6 @@ sourceImage =
     return
     
   init: () -> 
-    console.log 'init()?'
     # add css
     $style = $('<link>')
     $style.attr
