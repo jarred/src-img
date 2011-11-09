@@ -29,7 +29,7 @@
       _gaq.push(['src-img-tracker._trackEvent', 'site', 'open', window.location.hostname]);
       count = 0;
       $.each($('img'), __bind(function(index, img) {
-        var $img, searchUrl, src, flickrID, flickrRe = /static.flickr.com\/([0-9]*)\/([0-9]*)/i;
+        var $img, searchUrl, src, flickrID;
         $img = $(img);
         if ($img.height() < 100 || $img.width() < 100) {
           return;
@@ -41,7 +41,7 @@
           src = absolutizeURI(window.location, src);
         }
 		
-		flickrID = flickrRe.exec(src);
+		flickrID = /static.flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
 				
 		if (flickrID) {			
 			searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];

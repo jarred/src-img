@@ -58,7 +58,13 @@ sourceImage =
       src = $img.attr 'src'
       if src.indexOf 'http' < 0
         src = absolutizeURI window.location, src
-      searchUrl = "http://images.google.com/searchbyimage?image_url=#{escape(src)}&image_content=&bih=#{$img.height()}&biw=#{$img.width()}"                     
+        
+      flickrID = /static.flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
+      
+      if flickrID
+        searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
+      else
+        searchUrl = "http://images.google.com/searchbyimage?image_url=#{escape(src)}&image_content=&bih=#{$img.height()}&biw=#{$img.width()}"                     
       
       $('body').append "
       <a class=\"src-img\" style=\"width:#{$img.width()}px;height:#{$img.height()}px;top:#{$img.offset().top}px;left:#{$img.offset().left}px;\" href=\"#{searchUrl}\" target=\"_blank\"><span>&#63;&iquest;</span></a>
