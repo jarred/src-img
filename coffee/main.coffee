@@ -3,7 +3,7 @@ srcImg = window.SrcImg ||= {}
 srcImg.Main =
   # server: 'http://localhost:4104'
   server: 'http://jarred.github.com/src-img'
-  version: 0.55
+  version: 0.57
   
   init: () ->
     _.bindAll @

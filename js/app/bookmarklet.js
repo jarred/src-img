@@ -15,7 +15,6 @@
     },
     init: function() {
       var $style, close, count;
-      // console.log('init()?');
       $style = $('<link>');
       $style.attr({
         rel: 'stylesheet',
@@ -29,26 +28,22 @@
       _gaq.push(['src-img-tracker._trackEvent', 'site', 'open', window.location.hostname]);
       count = 0;
       $.each($('img'), __bind(function(index, img) {
-        var $img, searchUrl, src, flickrID;
+        var $img, flickrID, searchUrl, src;
         $img = $(img);
         if ($img.height() < 100 || $img.width() < 100) {
           return;
         }
         count++;
         src = $img.attr('src');
-		
         if (src.indexOf('http' < 0)) {
           src = absolutizeURI(window.location, src);
         }
-		
-		flickrID = /static.flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
-				
-		if (flickrID) {			
-			searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
-		} else {
-			searchUrl = "http://images.google.com/searchbyimage?image_url=" + (escape(src)) + "&image_content=&bih=" + ($img.height()) + "&biw=" + ($img.width());
-		}
-        
+        flickrID = /static.flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
+        if (flickrID) {
+          searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
+        } else {
+          searchUrl = "http://images.google.com/searchbyimage?image_url=" + (escape(src)) + "&image_content=&bih=" + ($img.height()) + "&biw=" + ($img.width());
+        }
         $('body').append("      <a class=\"src-img\" style=\"width:" + ($img.width()) + "px;height:" + ($img.height()) + "px;top:" + ($img.offset().top) + "px;left:" + ($img.offset().left) + "px;\" href=\"" + searchUrl + "\" target=\"_blank\"><span>&#63;&iquest;</span></a>      ");
       }, this));
       $('a.src-img').bind('click', this.trackClick);
