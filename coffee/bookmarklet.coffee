@@ -3,7 +3,7 @@ server = 'http://jarred.github.com/src-img/'
 analyticsID = 'UA-4516491-29'
 
 libs = [
-  'http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'
+  'http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'
   'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js'
   "#{server}/js/lib/URI.js"
   # "http://www.google-analytics.com/u/ga_debug.js"  
@@ -58,7 +58,7 @@ sourceImage =
       if src.indexOf 'http' < 0
         src = absolutizeURI window.location, src
         
-      flickrID = /static.flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
+      flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
       
       if flickrID
         searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
