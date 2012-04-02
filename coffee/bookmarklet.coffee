@@ -60,7 +60,7 @@ sourceImage =
       if src.indexOf 'http' < 0
         src = absolutizeURI window.location, src
       
-      flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.test(src);
+      flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
       
       if flickrID and !flickrHost
         searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
