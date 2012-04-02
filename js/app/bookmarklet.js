@@ -17,7 +17,7 @@
       _gaq.push(['src-img-tracker._trackEvent', 'site', 'click', window.location.hostname]);
     },
     init: function() {
-      var $style, close, count,
+      var $style, close, count, flickrHost,
         _this = this;
       $style = $('<link>');
       $style.attr({
@@ -31,6 +31,7 @@
       });
       _gaq.push(['src-img-tracker._trackEvent', 'site', 'open', window.location.hostname]);
       count = 0;
+      flickrHost = /flickr.com/i.test(window.location.hostname);
       $.each($('img'), function(index, img) {
         var $img, flickrID, searchUrl, src;
         $img = $(img);
@@ -38,8 +39,8 @@
         count++;
         src = $img.attr('src');
         if (src.indexOf('http' < 0)) src = absolutizeURI(window.location, src);
-        flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
-        if (flickrID) {
+        flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.test(src);
+        if (flickrID && !flickrHost) {
           searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
         } else {
           searchUrl = "http://images.google.com/searchbyimage?image_url=" + (escape(src)) + "&image_content=&bih=" + ($img.height()) + "&biw=" + ($img.width());

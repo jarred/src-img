@@ -4,7 +4,7 @@ srcImg.Main =
   # server: 'http://localhost:4104'
   # server: 'http://localhost:8000'
   server: 'http://jarred.github.com/src-img'
-  version: 0.57
+  version: 0.6
   
   init: () ->
     _.bindAll @

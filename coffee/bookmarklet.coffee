@@ -49,6 +49,8 @@ sourceImage =
     
     # add links above images
     count = 0
+    flickrHost = /flickr.com/i.test(window.location.hostname)
+    
     $.each $('img'), (index, img) =>
       $img = $(img)
       # break if image is too small
@@ -57,10 +59,10 @@ sourceImage =
       src = $img.attr 'src'
       if src.indexOf 'http' < 0
         src = absolutizeURI window.location, src
-        
-      flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.exec(src);
       
-      if flickrID
+      flickrID = /static.?flickr.com\/([0-9]*)\/([0-9]*)/i.test(src);
+      
+      if flickrID and !flickrHost
         searchUrl = "http://www.flickr.com/photo.gne?id=" + flickrID[2];
       else
         searchUrl = "http://images.google.com/searchbyimage?image_url=#{escape(src)}&image_content=&bih=#{$img.height()}&biw=#{$img.width()}"                     
