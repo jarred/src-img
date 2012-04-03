@@ -5,7 +5,7 @@
 
   srcImg.Main = {
     server: 'http://jarred.github.com/src-img',
-    version: 0.6,
+    version: 0.65,
     init: function() {
       _.bindAll(this);
       this.writeBookmarklet();
