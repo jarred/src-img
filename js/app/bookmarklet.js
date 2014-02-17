@@ -1,11 +1,11 @@
 (function() {
   var analyticsID, checkForRequire, libs, loadLibs, server, sourceImage;
 
-  server = 'http://jarred.github.com/src-img/';
+  server = '//jarred.github.com/src-img/';
 
   analyticsID = 'UA-4516491-29';
 
-  libs = ['http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', 'http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js', "" + server + "/js/lib/URI.js", "http://www.google-analytics.com/ga.js"];
+  libs = ['//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js', '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.1.7/underscore-min.js', "" + server + "/js/lib/URI.js", "//www.google-analytics.com/ga.js"];
 
   sourceImage = {
     exit: function(e) {
