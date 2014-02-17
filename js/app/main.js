@@ -4,7 +4,7 @@
   srcImg = window.SrcImg || (window.SrcImg = {});
 
   srcImg.Main = {
-    server: '//raw.github.com/BrainCrumbz/src-img/master',
+    server: 'http://jarred.github.com/src-img',
     version: 0.66,
     init: function() {
       _.bindAll(this);
