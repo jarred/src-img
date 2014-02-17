@@ -1,7 +1,7 @@
 (function() {
   var analyticsID, checkForRequire, libs, loadLibs, server, sourceImage;
 
-  server = '//github.com/BrainCrumbz/src-img/';
+  server = '//raw.github.com/BrainCrumbz/src-img/master';
 
   analyticsID = 'UA-4516491-29';
 
